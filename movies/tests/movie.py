@@ -1,12 +1,9 @@
-import datetime
-
 from django.conf import settings
 
 import responses
 from django.test import TestCase
 from rest_framework import status
 
-from movies.models.comment import Comment
 from movies.models.movie import Movie
 
 
