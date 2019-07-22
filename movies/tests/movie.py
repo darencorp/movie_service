@@ -1,9 +1,12 @@
+import datetime
+
 from django.conf import settings
 
 import responses
 from django.test import TestCase
 from rest_framework import status
 
+from movies.models.comment import Comment
 from movies.models.movie import Movie
 
 
@@ -940,4 +943,47 @@ class TestTopEndpoint(TestCase):
         self.assertEqual(response_data[1]['movie_id'], 2)
         
         self.assertEqual(response_data[2]['rank'], 3)
+        self.assertEqual(response_data[2]['movie_id'], 3)
+
+    @response.activate
+    def test_should_filter_comments_and_return_ranks_1(self):
+        self.response.add('GET', f'http://www.omdbapi.com/?apikey={settings.OMDB_API_KEY}&t=test1',
+                          json=self.movie1_api_response, status=200)
+        self.response.add('GET', f'http://www.omdbapi.com/?apikey={settings.OMDB_API_KEY}&t=test2',
+                          json=self.movie2_api_response, status=200)
+        self.response.add('GET', f'http://www.omdbapi.com/?apikey={settings.OMDB_API_KEY}&t=test3',
+                          json=self.movie3_api_response, status=200)
+
+        # movies
+        self.client.post('/movies/', data={'title': 'test1'})
+        self.client.post('/movies/', data={'title': 'test2'})
+        self.client.post('/movies/', data={'title': 'test3'})
+
+        # comments for the first movie
+        self.client.post('/comments/', data={'body': 'test', 'movie': 1, 'created': '2017-01-01'})
+        self.client.post('/comments/', data={'body': 'test2', 'movie': 1, 'created': '2016-01-01'})
+        self.client.post('/comments/', data={'body': 'test3', 'movie': 1, 'created': '2015-01-01'})
+        self.client.post('/comments/', data={'body': 'test4', 'movie': 1, 'created': '2014-02-02'})
+
+        # comments for the second movie
+        self.client.post('/comments/', data={'body': 'test', 'movie': 2, 'created': '2017-01-01'})
+        self.client.post('/comments/', data={'body': 'test2', 'movie': 2, 'created': '2016-01-01'})
+        # self.client.post('/comments/', data={'body': 'test3', 'movie': 2, 'created': '2015-01-01'})
+
+        # comments for the third movie
+        self.client.post('/comments/', data={'body': 'test', 'movie': 3, 'created': '2013-01-01'})
+        self.client.post('/comments/', data={'body': 'test2', 'movie': 3, 'created': '2012-01-01'})
+
+        response = self.client.get('/top/?start_date=2014-01-01&end_date=2017-02-02')
+        response_data = response.json()
+
+        self.assertEqual(len(response_data), 3)
+
+        self.assertEqual(response_data[0]['rank'], 1)
+        self.assertEqual(response_data[0]['movie_id'], 1)
+
+        self.assertEqual(response_data[1]['rank'], 1)
+        self.assertEqual(response_data[1]['movie_id'], 2)
+
+        self.assertEqual(response_data[2]['rank'], 1)
         self.assertEqual(response_data[2]['movie_id'], 3)
