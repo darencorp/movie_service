@@ -22,7 +22,11 @@ and save them into local database. There is an additional filters for movies tha
     * start_date
     * end_date
 
+### Heroku:
 
+The project is deployed on Heroku and could be accessed by: https://warm-reef-91851.herokuapp.com/
+
+### Install:
  
  There is few ways to do it:
 * #####Docker:
@@ -36,7 +40,7 @@ and save them into local database. There is an additional filters for movies tha
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. git clone git@github.com:darencorp/movie_service.git
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Make new virtualenv for python3.7 via pyenv, conda or virtualenv
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Make new virtualenv for python3.7 via pyenv, anaconda or virtualenv
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Activate your virtualenv
 
