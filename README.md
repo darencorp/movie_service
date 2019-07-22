@@ -3,7 +3,8 @@
 ### Description
 
 Whole idea of project is based on fetching movies by title from OBDb API 
-and save them into local database. There is an additional filters for movies that already in database:
+and save them into local database. There is additional filters and ordering for movies and comments:
+#### Filters:
 * Movie (/movies/):
     * title
     * year
@@ -21,6 +22,12 @@ and save them into local database. There is an additional filters for movies tha
 * Top (/top/):
     * start_date
     * end_date
+    
+#### Orders:
+* Movie:
+    * title
+    * year
+    * imdbrating
 
 ### Heroku:
 
