@@ -3,7 +3,7 @@
 ### Description
 
 Whole idea of project is based on fetching movies by title from OBDb API 
-and save them into local database. There is additional filters and ordering for movies and comments:
+and save them into local database. There are additional filters and ordering for movies and comments:
 #### Filters:
 * Movie (/movies/):
     * title
