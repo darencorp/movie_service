@@ -38,7 +38,7 @@ The project is deployed on Heroku and could be accessed by: https://warm-reef-91
  There are few ways to do it:
 * ##### Docker:
 
-    * git clone git@github.com:darencorp/movie_service.git
+    * git clone [git@github.com:darencorp/movie_service.git](git@github.com:darencorp/movie_service.git)
     
     * docker-compose up -d
     
@@ -49,7 +49,7 @@ The project is deployed on Heroku and could be accessed by: https://warm-reef-91
 
 * ##### Install from source
 
-    * git clone git@github.com:darencorp/movie_service.git
+    * git clone [git@github.com:darencorp/movie_service.git](git@github.com:darencorp/movie_service.git)
 
     * Make new virtualenv for python3.7 via pyenv, anaconda or virtualenv
     
