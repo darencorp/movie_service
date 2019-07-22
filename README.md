@@ -29,7 +29,7 @@ The project is deployed on Heroku and could be accessed by: https://warm-reef-91
 ### Install:
  
  There is few ways to do it:
-* #####Docker:
+* ##### Docker:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; docker-compose up -d
 
