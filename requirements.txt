@@ -3,7 +3,7 @@ chardet==3.0.4
 Django==2.2.3
 django-dotenv==1.4.2
 django-filter==2.2.0
-djangorestframework==3.10.1
+djangorestframework==3.11.2
 djangorestframework-stubs==0.4.2
 future==0.17.1
 gunicorn==19.9.0
